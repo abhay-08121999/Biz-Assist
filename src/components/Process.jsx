@@ -1,22 +1,19 @@
 import { processSteps } from '../data/services.js';
+import { Reveal } from './ui.jsx';
 
 export default function Process() {
   return (
-    <section className="section section--alt" id="process">
+    <section className="section" id="process">
       <div className="container">
-        <div className="section__head">
-          <h2>How it works</h2>
-          <p>From first call to live system in about a week.</p>
-        </div>
-        <ol className="steps">
-          {processSteps.map((step, i) => (
-            <li key={step.title} className="step">
-              <span className="step__num">{i + 1}</span>
-              <h4>{step.title}</h4>
-              <p>{step.text}</p>
-            </li>
+        <Reveal className="head"><h2>Live in about a week</h2><p>You talk to us twice. We do the rest.</p></Reveal>
+        <Reveal className="timeline">
+          {processSteps.map((s, i) => (
+            <div className="step" key={s.title} style={{ '--i': i }}>
+              <span className="step__n">{i + 1}</span>
+              <h3>{s.title}</h3><p>{s.text}</p>
+            </div>
           ))}
-        </ol>
+        </Reveal>
       </div>
     </section>
   );
